@@ -26,10 +26,13 @@
             <compilerflag value="-DUSING_GENERATED_CONFIG_H" />
             <compilerflag value="-DHAVE_LINUX_VERSION_H" />
             <compilerflag value="-D_REENTRANT" />
-            <compilerflag value="-m3dnow" />
-            <compilerflag value="-mmmx" />
-            <compilerflag value="-msse" />
-            <compilerflag value="-msse2" />
+            <compilerflag value="-m3dnow" unless="rpi" />
+            <compilerflag value="-mmmx" unless="rpi" />
+            <compilerflag value="-msse" unless="rpi" />
+            <compilerflag value="-msse2" unless="rpi" />
+ 	    <compilerflag value="-I/opt/vc/include/" if="rpi" />
+ 	    <compilerflag value="-I/opt/vc/include/interface/vcos/pthreads/" if="rpi" />
+ 	    <compilerflag value="-I/opt/vc/include/interface/vmcs_host/linux/" if="rpi" />
 
         </section>
 
@@ -148,8 +151,7 @@
 
         </section>
 
-        <section if="android || ios || windows" >
-
+        <section if="android || ios || windows || rpi" >
             <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/SDL_egl.c" />
             <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/render/opengles/SDL_render_gles.c" />
             <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/render/opengles2/SDL_render_gles2.c" />
@@ -256,16 +258,16 @@
             <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/joystick/linux/SDL_sysjoystick.c" />
             <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11clipboard.c" />
             <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11dyn.c" />
-            <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11events.c" />
-            <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11framebuffer.c" />
-            <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11keyboard.c" />
-            <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11messagebox.c" />
-            <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11modes.c" />
-            <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11mouse.c" />
+            <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11events.c"  />
+            <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11framebuffer.c"   />
+            <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11keyboard.c"  />
+            <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11messagebox.c"  />
+            <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11modes.c"  />
+            <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11mouse.c"  />
             <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11opengl.c" />
             <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11opengles.c" />
             <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11shape.c" />
-            <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11touch.c" />
+            <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11touch.c"  />
             <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11video.c" />
             <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11window.c" />
             <file name="${NATIVE_TOOLKIT_PATH}/sdl/src/video/x11/SDL_x11xinput2.c" />
