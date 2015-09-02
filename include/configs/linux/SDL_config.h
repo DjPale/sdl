@@ -72,7 +72,9 @@
 #define HAVE_SIGNAL_H 1
 /* #undef HAVE_ALTIVEC_H */
 /* #undef HAVE_PTHREAD_NP_H */
-/* #undef HAVE_LIBUDEV_H */
+#ifdef RASPBERRYPI
+#define HAVE_LIBUDEV_H 1
+#endif
 /* #undef HAVE_DBUS_DBUS_H */
 
 /* C library functions */
